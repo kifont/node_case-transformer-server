@@ -6,10 +6,10 @@ function createServer() {
     res.setHeader('Content-Type', 'application/json');
 
     const [path, queryString] = req.url.split('?');
-    const textToConvert = path.slice(1);
-
     const params = new URLSearchParams(queryString);
     const toCase = params.get('toCase');
+    const textToConvert = decodeURIComponent((path || '/').slice(1));
+
     const errors = [];
 
     if (!textToConvert) {
