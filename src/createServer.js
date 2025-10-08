@@ -37,8 +37,7 @@ function createServer() {
     }
 
     if (errors.length > 0) {
-      res.statusCode = 400;
-      res.statusMessage = 'Bad request';
+      res.writeHead(400, 'Bad request', { 'Content-Type': 'text/plain' });
       res.end(JSON.stringify({ errors }));
 
       return;
